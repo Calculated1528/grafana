@@ -1,0 +1,1453 @@
+{
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 31,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "aduajc0kvm4n4c"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": -1,
+              "drawStyle": "bars",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "line+area"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 0.3
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 6,
+        "options": {
+          "legend": {
+            "calcs": [
+              "min",
+              "max",
+              "lastNotNull",
+              "mean"
+            ],
+            "displayMode": "table",
+            "placement": "right",
+            "showLegend": true
+          },
+          "tooltip": {
+            "maxHeight": 600,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "aduajc0kvm4n4c"
+            },
+            "editorMode": "builder",
+            "expr": "histogram_quantile(0.95, sum by(le, path, job) (rate(microservices_http_response_time_seconds_bucket{path=\"order_make_payment_http\"}[5m])))",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "95th percentile / {{path}}",
+            "range": true,
+            "refId": "95th Percentile"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "aduajc0kvm4n4c"
+            },
+            "editorMode": "builder",
+            "exemplar": false,
+            "expr": "histogram_quantile(0.5, sum by(le, path, job) (rate(microservices_http_response_time_seconds_bucket{path=\"order_make_payment_http\"}[5m])))",
+            "hide": false,
+            "instant": false,
+            "interval": "",
+            "legendFormat": "median / {{path}}",
+            "range": true,
+            "refId": "Median"
+          }
+        ],
+        "title": "Завершение продажи",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "aduajc0kvm4n4c"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": -1,
+              "drawStyle": "bars",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "line+area"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 0.3
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 24,
+          "x": 0,
+          "y": 7
+        },
+        "id": 7,
+        "options": {
+          "legend": {
+            "calcs": [
+              "min",
+              "max",
+              "lastNotNull",
+              "mean"
+            ],
+            "displayMode": "table",
+            "placement": "right",
+            "showLegend": true
+          },
+          "tooltip": {
+            "maxHeight": 600,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "aduajc0kvm4n4c"
+            },
+            "editorMode": "builder",
+            "expr": "histogram_quantile(0.95, sum by(le, path, job) (rate(microservices_http_response_time_seconds_bucket{path=\"add_order_item_https\"}[5m])))",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "95th percentile / {{path}}",
+            "range": true,
+            "refId": "95th Percentile"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "aduajc0kvm4n4c"
+            },
+            "editorMode": "builder",
+            "exemplar": false,
+            "expr": "histogram_quantile(0.5, sum by(le, path, job) (rate(microservices_http_response_time_seconds_bucket{path=\"add_order_item_https\"}[5m])))",
+            "hide": false,
+            "instant": false,
+            "interval": "",
+            "legendFormat": "median / {{path}}",
+            "range": true,
+            "refId": "Median"
+          }
+        ],
+        "title": "Добавление товара",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "aduajc0kvm4n4c"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": -1,
+              "drawStyle": "bars",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "line+area"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 0.3
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 24,
+          "x": 0,
+          "y": 14
+        },
+        "id": 11,
+        "options": {
+          "legend": {
+            "calcs": [
+              "min",
+              "max",
+              "lastNotNull",
+              "mean"
+            ],
+            "displayMode": "table",
+            "placement": "right",
+            "showLegend": true
+          },
+          "tooltip": {
+            "maxHeight": 600,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "aduajc0kvm4n4c"
+            },
+            "editorMode": "builder",
+            "expr": "histogram_quantile(0.95, sum by(le, path, job) (rate(microservices_http_response_time_seconds_bucket{path=\"create_order\"}[5m])))",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "95th percentile / {{path}}",
+            "range": true,
+            "refId": "95th Percentile"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "aduajc0kvm4n4c"
+            },
+            "editorMode": "builder",
+            "exemplar": false,
+            "expr": "histogram_quantile(0.5, sum by(le, path, job) (rate(microservices_http_response_time_seconds_bucket{path=\"create_order\"}[5m])))",
+            "hide": false,
+            "instant": false,
+            "interval": "",
+            "legendFormat": "median / {{path}}",
+            "range": true,
+            "refId": "Median"
+          }
+        ],
+        "title": "Открытие продажи",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "aduajc0kvm4n4c"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": -1,
+              "drawStyle": "bars",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "line+area"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 0.3
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 24,
+          "x": 0,
+          "y": 21
+        },
+        "id": 8,
+        "options": {
+          "legend": {
+            "calcs": [
+              "min",
+              "max",
+              "lastNotNull",
+              "mean"
+            ],
+            "displayMode": "table",
+            "placement": "right",
+            "showLegend": true
+          },
+          "tooltip": {
+            "maxHeight": 600,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "aduajc0kvm4n4c"
+            },
+            "editorMode": "builder",
+            "expr": "histogram_quantile(0.95, sum by(le, path, job) (rate(microservices_http_response_time_seconds_bucket{path=\"product-search\"}[5m])))",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "95th percentile / {{path}}",
+            "range": true,
+            "refId": "95th Percentile"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "aduajc0kvm4n4c"
+            },
+            "editorMode": "builder",
+            "exemplar": false,
+            "expr": "histogram_quantile(0.5, sum by(le, path, job) (rate(microservices_http_response_time_seconds_bucket{path=\"product-search\"}[5m])))",
+            "hide": false,
+            "instant": false,
+            "interval": "",
+            "legendFormat": "median / {{path}}",
+            "range": true,
+            "refId": "Median"
+          }
+        ],
+        "title": "Поиск товара",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "aduajc0kvm4n4c"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": -1,
+              "drawStyle": "bars",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "line+area"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                },
+                {
+                  "color": "red",
+                  "value": 0.3
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 24,
+          "x": 0,
+          "y": 28
+        },
+        "id": 9,
+        "options": {
+          "legend": {
+            "calcs": [
+              "min",
+              "max",
+              "lastNotNull",
+              "mean"
+            ],
+            "displayMode": "table",
+            "placement": "right",
+            "showLegend": true
+          },
+          "tooltip": {
+            "maxHeight": 600,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "aduajc0kvm4n4c"
+            },
+            "editorMode": "builder",
+            "expr": "histogram_quantile(0.95, sum by(le, path, job) (rate(microservices_http_response_time_seconds_bucket{path=\"get-customer-list\"}[5m])))",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "95th percentile / {{path}}",
+            "range": true,
+            "refId": "95th Percentile"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "aduajc0kvm4n4c"
+            },
+            "editorMode": "builder",
+            "exemplar": false,
+            "expr": "histogram_quantile(0.5, sum by(le, path, job) (rate(microservices_http_response_time_seconds_bucket{path=\"get-customer-list\"}[5m])))",
+            "hide": false,
+            "instant": false,
+            "interval": "",
+            "legendFormat": "median / {{path}}",
+            "range": true,
+            "refId": "Median"
+          }
+        ],
+        "title": "Поиск клиента",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "aduajc0kvm4n4c"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": -1,
+              "drawStyle": "bars",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "line+area"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                },
+                {
+                  "color": "red",
+                  "value": 0.3
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 7,
+          "w": 24,
+          "x": 0,
+          "y": 35
+        },
+        "id": 12,
+        "options": {
+          "legend": {
+            "calcs": [
+              "min",
+              "max",
+              "lastNotNull",
+              "mean"
+            ],
+            "displayMode": "table",
+            "placement": "right",
+            "showLegend": true
+          },
+          "tooltip": {
+            "maxHeight": 600,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "aduajc0kvm4n4c"
+            },
+            "editorMode": "builder",
+            "expr": "histogram_quantile(0.95, sum by(le, path, job) (rate(microservices_http_response_time_seconds_bucket{path=\"catalogService.productRepo.GetUpdateProducts\"}[5m])))",
+            "instant": false,
+            "interval": "",
+            "legendFormat": "95th percentile",
+            "range": true,
+            "refId": "95th Percentile"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "aduajc0kvm4n4c"
+            },
+            "editorMode": "builder",
+            "exemplar": false,
+            "expr": "histogram_quantile(0.5, sum by(le, path, job) (rate(microservices_http_response_time_seconds_bucket{path=\"catalogService.productRepo.GetUpdateProducts\"}[5m])))",
+            "hide": false,
+            "instant": false,
+            "interval": "",
+            "legendFormat": "median",
+            "range": true,
+            "refId": "Median"
+          }
+        ],
+        "title": "product sync query",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "aduajc0kvm4n4c"
+        },
+        "description": "Показатели по core метрикам в микросервисах. Среднее время ответа сервера",
+        "fieldConfig": {
+          "defaults": {
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 42
+        },
+        "id": 1,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.0.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "aduajc0kvm4n4c"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "sum(rate(microservices_http_response_time_seconds_sum{instance=\"order-service.prod.svc.cluster.local:80\", job=\"order_service\", path=\"order_make_payment_http\"}[14d]))/sum(rate(microservices_http_response_time_seconds_count{instance=\"order-service.prod.svc.cluster.local:80\",job=\"order_service\",path=\"order_make_payment_http\"}[14d]))",
+            "format": "table",
+            "instant": true,
+            "interval": "0",
+            "key": "Q-4cf2e199-742a-4b88-b38b-0f501eabab65-0",
+            "legendFormat": "",
+            "range": false,
+            "refId": "Завершение продажи"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "aduajc0kvm4n4c"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "sum(rate(microservices_http_response_time_seconds_sum{instance=\"order-service.prod.svc.cluster.local:80\", job=\"order_service\", path=\"add_order_item\"}[14d]))/sum(rate(microservices_http_response_time_seconds_count{instance=\"order-service.prod.svc.cluster.local:80\",job=\"order_service\",path=\"add_order_item\"}[14d]))",
+            "format": "table",
+            "instant": true,
+            "key": "Q-4462b37c-177a-4b83-8a96-6b932623fee1-2",
+            "legendFormat": "",
+            "range": false,
+            "refId": "Добавление товара в новую продажу"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "aduajc0kvm4n4c"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "sum(rate(microservices_http_response_time_seconds_sum{instance=\"order-service.prod.svc.cluster.local:80\", job=\"order_service\", path=\"add_order_discount\"}[14d]))/sum(rate(microservices_http_response_time_seconds_count{instance=\"order-service.prod.svc.cluster.local:80\",job=\"order_service\",path=\"add_order_discount\"}[14d]))",
+            "format": "table",
+            "instant": true,
+            "key": "Q-847e1aa7-4ecf-4b6a-ae08-0b0864e9889d-3",
+            "legendFormat": "",
+            "range": false,
+            "refId": "Добавление скидки"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "aduajc0kvm4n4c"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "sum(rate(microservices_http_response_time_seconds_sum{instance=\"order-service.prod.svc.cluster.local:80\", job=\"order_service\", path=\"get_all_orders\"}[14d]))/sum(rate(microservices_http_response_time_seconds_count{instance=\"order-service.prod.svc.cluster.local:80\",job=\"order_service\",path=\"get_all_orders\"}[14d]))",
+            "format": "table",
+            "instant": true,
+            "key": "Q-a153adab-e3b9-48d3-80a7-8ab9bcfa530e-3",
+            "legendFormat": "",
+            "range": false,
+            "refId": "Поиск во всех продажах"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "aduajc0kvm4n4c"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "sum(rate(microservices_http_response_time_seconds_sum{instance=\"order-service.prod.svc.cluster.local:80\", job=\"order_service\", path=\"get_order_stats\"}[14d]))/sum(rate(microservices_http_response_time_seconds_count{instance=\"order-service.prod.svc.cluster.local:80\",job=\"order_service\",path=\"get_order_stats\"}[14d]))",
+            "format": "table",
+            "instant": true,
+            "key": "Q-ca7f2732-a455-43d1-a436-3cc083da6617-4",
+            "legendFormat": "",
+            "range": false,
+            "refId": "Статистика всех продаж"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "aduajc0kvm4n4c"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "sum(rate(microservices_http_response_time_seconds_sum{instance=\"catalog-service-v2.prod.svc.cluster.local:80\", job=\"catalog_service-v2\", path=\"new-sale-product-search\"}[14d]))/sum(rate(microservices_http_response_time_seconds_count{instance=\"catalog-service-v2.prod.svc.cluster.local:80\",job=\"catalog_service-v2\",path=\"new-sale-product-search\"}[14d]))",
+            "format": "table",
+            "instant": true,
+            "key": "Q-7e7b4b42-6c2e-4295-91cf-5aff39edde47-5",
+            "legendFormat": "",
+            "range": false,
+            "refId": "Поиск товара в новой продаже"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "aduajc0kvm4n4c"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "sum(rate(microservices_http_response_time_seconds_sum{instance=\"catalog-service-v2.prod.svc.cluster.local:80\", job=\"catalog_service-v2\", path=\"product-search\"}[14d]))/sum(rate(microservices_http_response_time_seconds_count{instance=\"catalog-service-v2.prod.svc.cluster.local:80\",job=\"catalog_service-v2\",path=\"product-search\"}[14d]))",
+            "format": "table",
+            "instant": true,
+            "key": "Q-a0e4e7cb-50ff-4f6c-92c0-0cf81a706985-6",
+            "legendFormat": "",
+            "range": false,
+            "refId": "Поиск товаров в каталоге"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "aduajc0kvm4n4c"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "sum(rate(microservices_http_response_time_seconds_sum{instance=\"catalog-service-v2.prod.svc.cluster.local:80\", job=\"catalog_service-v2\", path=\"product-search-stats\"}[14d]))/sum(rate(microservices_http_response_time_seconds_count{instance=\"catalog-service-v2.prod.svc.cluster.local:80\",job=\"catalog_service-v2\",path=\"product-search-stats\"}[14d]))",
+            "format": "table",
+            "instant": true,
+            "key": "Q-5bec2243-92c3-436f-9303-66b461b7b8f5-7",
+            "legendFormat": "",
+            "range": false,
+            "refId": "Статистика товаров в каталоге"
+          }
+        ],
+        "title": "Core Metrics 14d Average",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "aduajc0kvm4n4c"
+        },
+        "description": "Показатели по core метрикам в микросервисах. Среднее время ответа сервера",
+        "fieldConfig": {
+          "defaults": {
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 42
+        },
+        "id": 10,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "auto",
+          "wideLayout": true
+        },
+        "pluginVersion": "11.0.0",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "aduajc0kvm4n4c"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "sum(rate(microservices_http_response_time_seconds_sum{instance=\"order-service.prod.svc.cluster.local:80\", job=\"order_service\", path=\"order_make_payment_http\"}[$__interval]))/sum(rate(microservices_http_response_time_seconds_count{instance=\"order-service.prod.svc.cluster.local:80\",job=\"order_service\",path=\"order_make_payment_http\"}[$__interval]))",
+            "format": "table",
+            "hide": false,
+            "instant": true,
+            "interval": "0",
+            "key": "Q-4cf2e199-742a-4b88-b38b-0f501eabab65-0",
+            "legendFormat": "",
+            "range": false,
+            "refId": "Завершение продажи"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "aduajc0kvm4n4c"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "sum(rate(microservices_http_response_time_seconds_sum{instance=\"order-service.prod.svc.cluster.local:80\", job=\"order_service\", path=\"add_order_item\"}[$__interval]))/sum(rate(microservices_http_response_time_seconds_count{instance=\"order-service.prod.svc.cluster.local:80\",job=\"order_service\",path=\"add_order_item\"}[$__interval]))",
+            "format": "table",
+            "instant": true,
+            "key": "Q-4462b37c-177a-4b83-8a96-6b932623fee1-2",
+            "legendFormat": "",
+            "range": false,
+            "refId": "Добавление товара в новую продажу"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "aduajc0kvm4n4c"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "sum(rate(microservices_http_response_time_seconds_sum{instance=\"order-service.prod.svc.cluster.local:80\", job=\"order_service\", path=\"add_order_discount\"}[$__interval]))/sum(rate(microservices_http_response_time_seconds_count{instance=\"order-service.prod.svc.cluster.local:80\",job=\"order_service\",path=\"add_order_discount\"}[$__interval]))",
+            "format": "table",
+            "instant": true,
+            "key": "Q-847e1aa7-4ecf-4b6a-ae08-0b0864e9889d-3",
+            "legendFormat": "",
+            "range": false,
+            "refId": "Добавление скидки"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "aduajc0kvm4n4c"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "sum(rate(microservices_http_response_time_seconds_sum{instance=\"order-service.prod.svc.cluster.local:80\", job=\"order_service\", path=\"get_all_orders\"}[$__interval]))/sum(rate(microservices_http_response_time_seconds_count{instance=\"order-service.prod.svc.cluster.local:80\",job=\"order_service\",path=\"get_all_orders\"}[$__interval]))",
+            "format": "table",
+            "instant": true,
+            "key": "Q-a153adab-e3b9-48d3-80a7-8ab9bcfa530e-3",
+            "legendFormat": "",
+            "range": false,
+            "refId": "Поиск во всех продажах"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "aduajc0kvm4n4c"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "sum(rate(microservices_http_response_time_seconds_sum{instance=\"order-service.prod.svc.cluster.local:80\", job=\"order_service\", path=\"get_order_stats\"}[$__interval]))/sum(rate(microservices_http_response_time_seconds_count{instance=\"order-service.prod.svc.cluster.local:80\",job=\"order_service\",path=\"get_order_stats\"}[$__interval]))",
+            "format": "table",
+            "instant": true,
+            "key": "Q-ca7f2732-a455-43d1-a436-3cc083da6617-4",
+            "legendFormat": "",
+            "range": false,
+            "refId": "Статистика всех продаж"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "aduajc0kvm4n4c"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "sum(rate(microservices_http_response_time_seconds_sum{instance=\"catalog-service-v2.prod.svc.cluster.local:80\", job=\"catalog_service-v2\", path=\"new-sale-product-search\"}[$__interval]))/sum(rate(microservices_http_response_time_seconds_count{instance=\"catalog-service-v2.prod.svc.cluster.local:80\",job=\"catalog_service-v2\",path=\"new-sale-product-search\"}[$__interval]))",
+            "format": "table",
+            "instant": true,
+            "key": "Q-7e7b4b42-6c2e-4295-91cf-5aff39edde47-5",
+            "legendFormat": "",
+            "range": false,
+            "refId": "Поиск товара в новой продаже"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "aduajc0kvm4n4c"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "sum(rate(microservices_http_response_time_seconds_sum{instance=\"catalog-service-v2.prod.svc.cluster.local:80\", job=\"catalog_service-v2\", path=\"product-search\"}[$__interval]))/sum(rate(microservices_http_response_time_seconds_count{instance=\"catalog-service-v2.prod.svc.cluster.local:80\",job=\"catalog_service-v2\",path=\"product-search\"}[$__interval]))",
+            "format": "table",
+            "instant": true,
+            "key": "Q-a0e4e7cb-50ff-4f6c-92c0-0cf81a706985-6",
+            "legendFormat": "",
+            "range": false,
+            "refId": "Поиск товаров в каталоге"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "aduajc0kvm4n4c"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "sum(rate(microservices_http_response_time_seconds_sum{instance=\"catalog-service-v2.prod.svc.cluster.local:80\", job=\"catalog_service-v2\", path=\"product-search-stats\"}[$__interval]))/sum(rate(microservices_http_response_time_seconds_count{instance=\"catalog-service-v2.prod.svc.cluster.local:80\",job=\"catalog_service-v2\",path=\"product-search-stats\"}[$__interval]))",
+            "format": "table",
+            "instant": true,
+            "key": "Q-5bec2243-92c3-436f-9303-66b461b7b8f5-7",
+            "legendFormat": "",
+            "range": false,
+            "refId": "Статистика товаров в каталоге"
+          }
+        ],
+        "title": "Core Metrics custom interval",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "aduajc0kvm4n4c"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 9,
+          "w": 12,
+          "x": 0,
+          "y": 50
+        },
+        "id": 3,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "maxHeight": 600,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "9.3.2",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "aduajc0kvm4n4c"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "histogram_quantile(0.5, sum(rate(microservices_http_response_time_seconds_bucket[$__interval])) by (le, job, path))",
+            "format": "time_series",
+            "instant": true,
+            "interval": "0",
+            "key": "Q-4cf2e199-742a-4b88-b38b-0f501eabab65-0",
+            "legendFormat": "__auto",
+            "range": true,
+            "refId": "95th Percentile"
+          }
+        ],
+        "title": "Response Time Of Microservices / Median",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "aduajc0kvm4n4c"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "s"
+          },
+          "overrides": [
+            {
+              "__systemRef": "hideSeriesFrom",
+              "matcher": {
+                "id": "byNames",
+                "options": {
+                  "mode": "exclude",
+                  "names": [
+                    "median / get-all-transactions"
+                  ],
+                  "prefix": "All except:",
+                  "readOnly": true
+                }
+              },
+              "properties": [
+                {
+                  "id": "custom.hideFrom",
+                  "value": {
+                    "legend": false,
+                    "tooltip": false,
+                    "viz": true
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 9,
+          "w": 12,
+          "x": 12,
+          "y": 50
+        },
+        "id": 4,
+        "options": {
+          "legend": {
+            "calcs": [
+              "min",
+              "max",
+              "lastNotNull"
+            ],
+            "displayMode": "table",
+            "placement": "right",
+            "showLegend": true,
+            "sortBy": "Max",
+            "sortDesc": true
+          },
+          "tooltip": {
+            "maxHeight": 600,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "9.3.2",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "aduajc0kvm4n4c"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "histogram_quantile(0.95, sum(rate(microservices_http_response_time_seconds_bucket[$__interval])) by (le,path,job))",
+            "format": "time_series",
+            "instant": true,
+            "interval": "1h",
+            "key": "Q-4cf2e199-742a-4b88-b38b-0f501eabab65-0",
+            "legendFormat": "95th percentile / {{path}}",
+            "range": true,
+            "refId": "95th Percentile"
+          },
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "aduajc0kvm4n4c"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "histogram_quantile(0.5, sum(rate(microservices_http_response_time_seconds_bucket[$__interval])) by (le,path,job))",
+            "format": "time_series",
+            "hide": false,
+            "instant": true,
+            "interval": "1h",
+            "key": "Q-4cf2e199-742a-4b88-b38b-0f501eabab65-0",
+            "legendFormat": "median / {{path}}",
+            "range": true,
+            "refId": "Median"
+          }
+        ],
+        "title": "Response Time Of Microservices / 95th percentile",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "prometheus",
+          "uid": "1qKnRpMnk"
+        },
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green"
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 9,
+          "w": 12,
+          "x": 0,
+          "y": 59
+        },
+        "id": 2,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "maxHeight": 600,
+            "mode": "single",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "9.3.2",
+        "targets": [
+          {
+            "datasource": {
+              "type": "prometheus",
+              "uid": "1qKnRpMnk"
+            },
+            "editorMode": "code",
+            "exemplar": false,
+            "expr": "histogram_quantile(0.95, sum(rate(microservices_http_response_time_seconds_bucket[$__interval])) by (le, job, path))",
+            "format": "time_series",
+            "instant": true,
+            "interval": "0",
+            "key": "Q-4cf2e199-742a-4b88-b38b-0f501eabab65-0",
+            "legendFormat": "__auto",
+            "range": true,
+            "refId": "95th Percentile"
+          }
+        ],
+        "title": "Response Time Of Microservices / 95th percentile",
+        "type": "timeseries"
+      }
+    ],
+    "refresh": "5s",
+    "schemaVersion": 39,
+    "tags": [],
+    "templating": {
+      "list": []
+    },
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "timeRangeUpdatedDuringEditOrView": false,
+    "timepicker": {},
+    "timezone": "",
+    "title": "Microservices Response Time Metrics",
+    "uid": "-Zxj6bJ4z",
+    "version": 2,
+    "weekStart": ""
+  }
