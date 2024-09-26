@@ -1,0 +1,109 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+    meta.helm.sh/release-name: release
+    meta.helm.sh/release-namespace: observability
+  creationTimestamp: "2024-06-07T10:26:47Z"
+  generation: 1
+  labels:
+    app.kubernetes.io/instance: release
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: jaeger-operator
+  name: release-jaeger-operator
+  namespace: observability
+  resourceVersion: "29917820"
+  uid: 94e61d78-6f83-4eaf-91b8-d7f8483f896d
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: release
+      app.kubernetes.io/name: jaeger-operator
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app.kubernetes.io/instance: release
+        app.kubernetes.io/name: jaeger-operator
+      name: release-jaeger-operator
+    spec:
+      containers:
+      - args:
+        - start
+        - --metrics-port=8383
+        - --webhook-bind-port=9443
+        env:
+        - name: WATCH_NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+        - name: POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+        - name: OPERATOR_NAME
+          value: release-jaeger-operator
+        image: jaegertracing/jaeger-operator:1.57.0
+        imagePullPolicy: IfNotPresent
+        name: release-jaeger-operator
+        ports:
+        - containerPort: 8383
+          name: metrics
+          protocol: TCP
+        - containerPort: 9443
+          name: webhook-server
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /tmp/k8s-webhook-server/serving-certs
+          name: cert
+          readOnly: true
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      serviceAccount: release-jaeger-operator
+      serviceAccountName: release-jaeger-operator
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: cert
+        secret:
+          defaultMode: 420
+          secretName: jaeger-operator-service-cert
+status:
+  availableReplicas: 1
+  conditions:
+  - lastTransitionTime: "2024-06-07T10:26:47Z"
+    lastUpdateTime: "2024-06-07T10:26:58Z"
+    message: ReplicaSet "release-jaeger-operator-c4fc9c75f" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  - lastTransitionTime: "2024-08-19T15:25:37Z"
+    lastUpdateTime: "2024-08-19T15:25:37Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  observedGeneration: 1
+  readyReplicas: 1
+  replicas: 1
+  updatedReplicas: 1
